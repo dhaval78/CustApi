@@ -33,14 +33,14 @@ app.get("/customers",function(req,res){
     })
 });
 app.get("/customers/:id",function(req,res){
-    let id=+req.params.id;
+    let id=req.params.id;
     fs.readFile(fname,"utf8",function(err,data){
         if(err)res.status(404).send(err);
         else {
             let customersArray=JSON.parse(data);
-            let student=customersArray.find((st)=>st.id===id.toString());
-            if(student)res.send(student);
-            else res.status(404).send("No student found");
+            let customer=customersArray.find((st)=>st.id===id.toString());
+            if(customer)res.send(customer);
+            else res.status(404).send("No customer found");
     
     }
     })
