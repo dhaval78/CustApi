@@ -38,7 +38,7 @@ app.get("/customers/:id",function(req,res){
         if(err)res.status(404).send(err);
         else {
             let customersArray=JSON.parse(data);
-            let student=customersArray.find((st)=>st.id===id);
+            let student=customersArray.find((st)=>st.id===id.toString());
             if(student)res.send(student);
             else res.status(404).send("No student found");
     
