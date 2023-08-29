@@ -73,12 +73,12 @@ if(customersArray.find((cust)=>cust.id===randomAlphabeticId)!==undefined) {
 })
 app.put("/customers/:id",function(req,res){
     let body=req.body;
-    let id = +req.params.id;
+    let id = req.params.id;
     fs.readFile(fname,"utf8",function (err,data){
         if(err) res.status(404).send(err);
         else{
             let customersArray=JSON.parse(data);
-            let index=customersArray.findIndex((st)=>st.id===id);
+            let index=customersArray.findIndex((st)=>st.id===id.toString());
             if(index>=0){
                 let updatedStudent={...customersArray[index],...body};
                 customersArray[index]=updatedStudent;
